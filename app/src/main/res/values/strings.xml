@@ -6,5 +6,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_welcome">Welcome</string>
+    <string name="title_activity_create_user">CreateUser</string>
 
 </resources>
