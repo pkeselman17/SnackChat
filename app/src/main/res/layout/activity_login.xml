@@ -12,7 +12,7 @@
         android:id="@+id/textViewDisplay"
         android:gravity="center"
         android:text="@string/title_activity_login"
-        android:textColor="light_green"
+
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_alignParentTop="true"
         android:layout_marginTop="30dp"
@@ -26,7 +26,7 @@
         android:layout_marginTop="80dp"
         android:layout_below="@id/textViewDisplay"
         android:text="username"
-        android:textColor="light_green"
+
         android:textAppearance="?android:attr/textAppearanceMedium"
         />
 
@@ -49,7 +49,7 @@
         android:layout_below="@id/textViewUsername"
         android:layout_marginTop="30dp"
         android:text="password"
-        android:textColor="light_green"
+
         android:textAppearance="?android:attr/textAppearanceMedium"
         />
 
@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:onClick="loginAttempt"
         android:text="login"
-        android:textColor="light_green"
+
         android:layout_marginTop="45dip"
         android:layout_centerInParent="true"
         android:layout_below="@+id/editTextPassword"

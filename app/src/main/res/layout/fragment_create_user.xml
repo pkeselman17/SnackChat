@@ -10,7 +10,7 @@
 
     <TextView
         android:text="password"
-        android:textColor="light_green"
+
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentLeft="true"
         android:layout_width="wrap_content"
@@ -101,7 +101,7 @@
 
     <TextView
         android:text="confirmPassword"
-        android:textColor="light_green"
+
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentLeft="true"
         android:layout_width="wrap_content"
@@ -113,7 +113,7 @@
 
     <TextView
         android:text="email"
-        android:textColor="light_green"
+
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentLeft="true"
         android:layout_width="wrap_content"
