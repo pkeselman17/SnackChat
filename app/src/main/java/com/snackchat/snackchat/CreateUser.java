@@ -81,9 +81,12 @@ public class CreateUser extends Activity {
         }
 
         else{
-            //code to write to the could should go here i think
-
-
+//            ParseObject user = new ParseObject("user");
+//            user.put("first_name", firstName);
+//            user.put("last_name", lastName);
+//            user.put("email", email);
+//            user.put("password", password);
+//            user.saveInBackground();
         }
 
 
@@ -141,4 +144,5 @@ public class CreateUser extends Activity {
             return rootView;
         }
     }
+
 }
