@@ -31,6 +31,10 @@
             android:name=".CreateUser"
             android:label="@string/title_activity_create_user" >
         </activity>
+        <activity
+            android:name=".DynamicAddListItems"
+            android:label="@string/title_activity_dynamic_add_list_items" >
+        </activity>
     </application>
 
 </manifest>

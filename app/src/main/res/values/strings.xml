@@ -8,5 +8,6 @@
     <string name="title_activity_welcome">Welcome</string>
     <string name="title_activity_create_user">CreateUser</string>
     <string name="title_activity_testetaewfwe">testetaewfwe</string>
+    <string name="title_activity_dynamic_add_list_items">DynamicAddListItems</string>
 
 </resources>
