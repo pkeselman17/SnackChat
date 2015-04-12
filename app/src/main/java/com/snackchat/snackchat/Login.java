@@ -22,7 +22,7 @@ public class Login extends Activity {
 
 
 
-        //initilaze
+        //initialize
         username = (EditText) findViewById(R.id.editTextUsername);
         password = (EditText) findViewById(R.id.editTextPassword);
         login = (Button) findViewById(R.id.buttonLogin);

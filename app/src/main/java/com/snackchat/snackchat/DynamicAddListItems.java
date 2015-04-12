@@ -28,20 +28,21 @@ public class DynamicAddListItems extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dynamic_add_list_items);
 
+        // initialize
         addButton = (Button) findViewById(R.id.addItemButton);
         doneButton = (Button) findViewById(R.id.doneButton);
-
         lv = (ListView) findViewById(R.id.itemsListView);
-
         name = (EditText) findViewById(R.id.NameTextBox);
         maxPrice = (EditText) findViewById(R.id.MaxPriceTextBox);
         itemText = (EditText) findViewById(R.id.ItemTextBox);
 
         stringArray = new ArrayList<String>();
 
+        // This isn't really needed, just tests output with first two rows saying row 0, row 1
         for (int i = 0; i<2; i++){
             stringArray.add("Row: " + i);
         }
+
         adapter = new ArrayAdapter<String> (getApplicationContext(), android.R.layout.simple_list_item_1, stringArray);
         lv.setAdapter(adapter);
     }
@@ -52,6 +53,9 @@ public class DynamicAddListItems extends Activity {
     }
 
     public void onDone(View view){
+        String submitName = name.getText().toString();
+        String submitMaxPrice = maxPrice.getText().toString();
+        ArrayList submitList = stringArray;
 
     }
 
