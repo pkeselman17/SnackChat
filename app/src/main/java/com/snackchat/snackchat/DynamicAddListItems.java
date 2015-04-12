@@ -38,23 +38,30 @@ public class DynamicAddListItems extends Activity {
 
         stringArray = new ArrayList<String>();
 
-        // This isn't really needed, just tests output with first two rows saying row 0, row 1
-        for (int i = 0; i<2; i++){
-            stringArray.add("Row: " + i);
-        }
+        // This isn't really needed, just tests output with a line saying "Your List"
+        stringArray.add("Your List");
 
         adapter = new ArrayAdapter<String> (getApplicationContext(), android.R.layout.simple_list_item_1, stringArray);
         lv.setAdapter(adapter);
     }
 
+    // Adds the text from the "Item" text box to the stringArray
     public void onAddedItem(View view){
         stringArray.add(itemText.getText().toString());
         adapter.notifyDataSetChanged();
+        // Clear the Item text box after adding it to list
+        ((EditText) findViewById(R.id.ItemTextBox)).setText("");
+
     }
 
+    /*
+    Stores the given name (as submitName),
+    the given Max Price (as submitMaxPrice),
+    and the Array (as SubmitList)
+     */
     public void onDone(View view){
-        String submitName = name.getText().toString();
-        String submitMaxPrice = maxPrice.getText().toString();
+        String submitName = name.getText().toString().trim();
+        String submitMaxPrice = maxPrice.getText().toString().trim();
         ArrayList submitList = stringArray;
 
     }
