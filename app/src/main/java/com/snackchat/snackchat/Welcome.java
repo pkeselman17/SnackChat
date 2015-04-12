@@ -3,6 +3,7 @@ package com.snackchat.snackchat;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,12 +18,18 @@ public class Welcome extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
+        setContentView(R.layout.fragment_welcome);
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                   .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+    }
+
+    public void LoginClick(View view)
+    {
+        Intent in = new Intent(getBaseContext(), Login.class);
+        startActivity(in);
     }
 
 

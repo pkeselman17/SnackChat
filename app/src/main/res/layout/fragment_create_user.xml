@@ -100,7 +100,7 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:text="confirmPassword"
+        android:text="confirmPass"
 
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentLeft="true"
