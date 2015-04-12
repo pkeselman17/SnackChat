@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class CreateUser extends Activity {
@@ -47,6 +48,43 @@ public class CreateUser extends Activity {
 
         //see if the info is being stored to the string above when the submit button is pressed
         Log.d(TAG, firstName);
+
+        //Verify text entered is valid
+        if (firstName.length() == 0)
+        {
+            Toast.makeText(getApplicationContext(),"Please enter your first name", Toast.LENGTH_SHORT).show();
+        }
+        else if (lastName.length() == 0)
+        {
+            Toast.makeText(getApplicationContext(),"Please enter your last name", Toast.LENGTH_SHORT).show();
+        }
+        else if (email.length() == 0)
+        {
+            Toast.makeText(getApplicationContext(),"Please enter your email address", Toast.LENGTH_SHORT).show();
+        }
+        else if (password.length() == 0)
+        {
+            Toast.makeText(getApplicationContext(),"Please enter a password", Toast.LENGTH_SHORT).show();
+        }
+        else if (confPass.length() == 0)
+        {
+            Toast.makeText(getApplicationContext(),"Please confirm your password", Toast.LENGTH_SHORT).show();
+        }
+        else if (!password.equals(confPass))
+        {
+            confirmEditText.requestFocus();
+            Toast.makeText(getApplicationContext(),"Your passwords do not match", Toast.LENGTH_SHORT).show();
+        }
+        else if (!email.contains("@"))
+        {
+            Toast.makeText(getApplicationContext(),"Please enter a valid email address", Toast.LENGTH_SHORT).show();
+        }
+
+        else{
+            //code to write to the could should go here i think
+
+
+        }
 
 
 
