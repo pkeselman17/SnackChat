@@ -9,5 +9,7 @@
     <string name="title_activity_create_user">CreateUser</string>
     <string name="title_activity_testetaewfwe">testetaewfwe</string>
     <string name="title_activity_dynamic_add_list_items">DynamicAddListItems</string>
+    <string name="title_activity_groups_page">GroupsPage</string>
+    <string name="title_activity_create_new_group_screen">CreateNewGroupScreen</string>
 
 </resources>
