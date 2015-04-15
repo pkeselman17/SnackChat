@@ -7,6 +7,8 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Button;
 
+import com.parse.ParseObject;
+
 
 public class Login extends Activity {
 
