@@ -59,9 +59,18 @@ public class GroupsPage extends Activity {
 
     // What happens when you click Create A New Group
     // Somehow Link it to Create New Group Screen
-    public void onAddedItem(View view){
+    public void onCreateNewGroup(View view){
+        // Send them to Create New Group Page
 
     }
+
+
+    // When User Hits Logout, brings them back to My Groups Page
+    public void onLogout(View view){
+        // Send them back to Welcome Page
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

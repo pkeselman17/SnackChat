@@ -62,6 +62,12 @@ public class CreateNewGroupScreen extends Activity {
         }
     }
 
+    // When User Hits Cancel, brings them back to My Groups Page
+    public void onCancel(View view){
+        // Send them back to My Groups Page
+
+    }
+
     /*
       Stores the given name (as submitName),
       the given Max Price (as submitMaxPrice),
@@ -80,7 +86,11 @@ public class CreateNewGroupScreen extends Activity {
             Toast.makeText(getApplicationContext(),"Please add members to the group", Toast.LENGTH_SHORT).show();
         }
 
+        // ADD submitList to the Group
+        // Send them back to the Page of the specific group they were on
+
     }
+
 
 
     @Override

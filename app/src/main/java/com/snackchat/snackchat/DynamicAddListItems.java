@@ -62,6 +62,12 @@ public class DynamicAddListItems extends Activity {
         }
     }
 
+    // When User Hits Cancel, brings them back to the Page of the Specific Group they were on
+    public void onCancel(View view){
+        // Send them back to Page of the Specific Group they were on
+
+    }
+
     /*
     Stores the given name (as submitName),
     the given Max Price (as submitMaxPrice),
@@ -86,6 +92,9 @@ public class DynamicAddListItems extends Activity {
         {
             Toast.makeText(getApplicationContext(),"Please add elements to the list", Toast.LENGTH_SHORT).show();
         }
+
+        // ADD submitList to the Group
+        // Send them back to the Page of the specific group they were on
 
     }
 
