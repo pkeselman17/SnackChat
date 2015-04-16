@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DynamicAddListItems extends Activity {
+public class CreateNewList extends Activity {
 
     private Button addButton;
     private Button doneButton;
@@ -28,7 +28,7 @@ public class DynamicAddListItems extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dynamic_add_list_items);
+        setContentView(R.layout.activity_create_new_list);
 
         // initialize
         addButton = (Button) findViewById(R.id.addItemButton);

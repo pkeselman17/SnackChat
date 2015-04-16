@@ -39,6 +39,11 @@ public class Login extends Activity {
         login = (Button) findViewById(R.id.buttonLogin);
     }
 
+    public void loginAttempt() {
+        // if login attempt successful, send them to my groups screen
+        // else, toast statement saying unsuccessful login
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

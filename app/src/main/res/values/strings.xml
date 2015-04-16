@@ -11,5 +11,7 @@
     <string name="title_activity_dynamic_add_list_items">DynamicAddListItems</string>
     <string name="title_activity_groups_page">GroupsPage</string>
     <string name="title_activity_create_new_group_screen">CreateNewGroupScreen</string>
+    <string name="title_activity_lists_in_group">ListsInGroup</string>
+    <string name="title_activity_individual_list">IndividualList</string>
 
 </resources>

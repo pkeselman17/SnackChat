@@ -56,7 +56,8 @@
         android:onClick="onAddedItem"
         android:id="@+id/addMemberButton"
         android:layout_below="@+id/memberNameTextBox"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:clickable="true" />
 
     <ListView
         android:layout_width="wrap_content"

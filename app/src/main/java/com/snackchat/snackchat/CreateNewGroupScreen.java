@@ -75,6 +75,7 @@ public class CreateNewGroupScreen extends Activity {
     */
     public void onDone(View view){
         String groupTitle = groupName.getText().toString().trim();
+        // Start groupMemberList at position 1 because spot 0 has "Your Group"
         List groupMemberList = stringArray.subList(1, stringArray.size());
         //Verify text entered is valid
         if (groupTitle.length() == 0)
@@ -86,8 +87,8 @@ public class CreateNewGroupScreen extends Activity {
             Toast.makeText(getApplicationContext(),"Please add members to the group", Toast.LENGTH_SHORT).show();
         }
 
-        // ADD submitList to the Group
-        // Send them back to the Page of the specific group they were on
+        // ADD groupTitle and groupMemberList to My Groups
+        // Send them back to the My Groups page they were on
 
     }
 

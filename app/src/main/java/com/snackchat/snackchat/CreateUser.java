@@ -89,7 +89,7 @@ public class CreateUser extends Activity {
 //            user.saveInBackground();
         }
 
-
+        // AFTER CREATING USER, SEND THEM BACK TO WELCOME SCREEN
 
     }
 

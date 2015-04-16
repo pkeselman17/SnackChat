@@ -33,7 +33,7 @@
             android:label="@string/title_activity_create_user" >
         </activity>
         <activity
-            android:name=".DynamicAddListItems"
+            android:name=".CreateNewList"
             android:label="@string/title_activity_dynamic_add_list_items" >
         </activity>
         <activity
@@ -43,6 +43,14 @@
         <activity
             android:name=".CreateNewGroupScreen"
             android:label="@string/title_activity_create_new_group_screen" >
+        </activity>
+        <activity
+            android:name=".ListsInGroup"
+            android:label="@string/title_activity_lists_in_group" >
+        </activity>
+        <activity
+            android:name=".IndividualList"
+            android:label="@string/title_activity_individual_list" >
         </activity>
     </application>
 
