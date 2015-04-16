@@ -65,8 +65,9 @@ public class IndividualList extends Activity {
     // What happens when you click Submit
     public void onSubmit(View view){
         // if box is checked, and totalCost < maxPrice
-        // Add finished List to all the Lists in the group
-        // and then Send them to ListsInGroup Page
+        // Remove List from the Lists in the group
+        // because the List's task is now completed
+        // and then Send user to ListsInGroup Page
 
     }
 
