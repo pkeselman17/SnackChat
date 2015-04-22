@@ -1,14 +1,11 @@
 package com.snackchat.snackchat;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.parse.ParseObject;
 
@@ -42,24 +39,10 @@ public class Login extends Activity {
         login = (Button) findViewById(R.id.buttonLogin);
     }
 
-    public void loginAttempt(View view) {
+    public void loginAttempt() {
         // if login attempt successful, send them to my groups screen
         // else, toast statement saying unsuccessful login
-        final String givenName = username.getText().toString().trim();
-        final String givenPassword = password.getText().toString().trim();
 
-//        if (givenName.length() == 0)
-//        {
-//            Toast.makeText(getApplicationContext(),"Please enter a valid username", Toast.LENGTH_SHORT).show();
-//        }
-//        else if (givenPassword.length() == 0)
-//        {
-//            Toast.makeText(getApplicationContext(),"Please enter a valid password", Toast.LENGTH_SHORT).show();
-//        }
-//        else {
-            Intent in = new Intent(getBaseContext(), GroupsPage.class);
-            startActivity(in);
-//        }
     }
 
     @Override

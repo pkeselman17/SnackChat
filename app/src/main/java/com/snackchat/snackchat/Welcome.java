@@ -28,11 +28,7 @@ public class Welcome extends Activity {
         }
     }
 
-    public void LoginClick(View view)
-    {
-        Intent in = new Intent(getBaseContext(), Login.class);
-        startActivity(in);
-    }
+
 
 
     @Override
