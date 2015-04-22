@@ -3,6 +3,7 @@ package com.snackchat.snackchat;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.ListView;
 import android.widget.Button;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
+import com.parse.Parse;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +45,8 @@ public class GroupsPage extends Activity {
 
         adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,myGroups);
         lv.setAdapter(adapter);
-
+        ParseUser user = ParseUser.getCurrentUser();
+        Log.d("PHIL",user.getUsername().toString());
 
     }
 

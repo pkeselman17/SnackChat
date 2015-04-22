@@ -1,13 +1,20 @@
 package com.snackchat.snackchat;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.parse.LogInCallback;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
+
+import java.text.ParseException;
 
 
 public class Login extends Activity {
@@ -39,9 +46,23 @@ public class Login extends Activity {
         login = (Button) findViewById(R.id.buttonLogin);
     }
 
-    public void loginAttempt() {
-        // if login attempt successful, send them to my groups screen
-        // else, toast statement saying unsuccessful login
+    public void loginAttempt(View view) {
+
+        ParseUser.logInInBackground(username.getText().toString(), password.getText()
+                .toString(), new LogInCallback() {
+            @Override
+            public void done(ParseUser parseUser, com.parse.ParseException e) {
+                if(e != null){
+                    Toast.makeText(Login.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                }else{
+
+                    Intent intent = new Intent(Login.this, DispatchActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
+
+            }
+        });
 
     }
 
