@@ -3,6 +3,7 @@ package com.snackchat.snackchat;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
@@ -79,7 +80,8 @@ public class CreateUser extends Activity {
         {
             Toast.makeText(getApplicationContext(),"Please enter a valid email address", Toast.LENGTH_SHORT).show();
         }
-
+        // AFTER CREATING USER, SEND THEM BACK TO WELCOME SCREEN
+        // Store All Create User info in parse
         else{
 //            ParseObject user = new ParseObject("user");
 //            user.put("first_name", firstName);
@@ -87,9 +89,11 @@ public class CreateUser extends Activity {
 //            user.put("email", email);
 //            user.put("password", password);
 //            user.saveInBackground();
+            Intent in = new Intent(getBaseContext(), Welcome.class);
+            startActivity(in);
         }
 
-        // AFTER CREATING USER, SEND THEM BACK TO WELCOME SCREEN
+
 
     }
 

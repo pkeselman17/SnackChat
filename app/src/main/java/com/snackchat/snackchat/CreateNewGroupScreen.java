@@ -1,6 +1,7 @@
 package com.snackchat.snackchat;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -65,7 +66,8 @@ public class CreateNewGroupScreen extends Activity {
     // When User Hits Cancel, brings them back to My Groups Page
     public void onCancel(View view){
         // Send them back to My Groups Page
-
+        Intent in = new Intent(getBaseContext(), GroupsPage.class);
+        startActivity(in);
     }
 
     /*
@@ -78,17 +80,26 @@ public class CreateNewGroupScreen extends Activity {
         // Start groupMemberList at position 1 because spot 0 has "Your Group"
         List groupMemberList = stringArray.subList(1, stringArray.size());
         //Verify text entered is valid
-        if (groupTitle.length() == 0)
-        {
-            Toast.makeText(getApplicationContext(), "Please enter a Group name", Toast.LENGTH_SHORT).show();
-        }
-        else if (groupMemberList.size() == 0)
-        {
-            Toast.makeText(getApplicationContext(),"Please add members to the group", Toast.LENGTH_SHORT).show();
-        }
+//        if (groupTitle.length() == 0)
+//        {
+//            Toast.makeText(getApplicationContext(), "Please enter a Group name", Toast.LENGTH_SHORT).show();
+//        }
+//        else if (groupMemberList.size() == 0)
+//        {
+//            Toast.makeText(getApplicationContext(),"Please add members to the group", Toast.LENGTH_SHORT).show();
+//        }
 
         // ADD groupTitle and groupMemberList to My Groups
         // Send them back to the My Groups page they were on
+//        else {
+            // ADD groupTitle and groupMemberList to My Groups
+
+
+            // Send them back to the My Groups page they were on
+            Intent in = new Intent(getBaseContext(), CreateNewGroupScreen.class);
+            startActivity(in);
+//        }
+
 
     }
 

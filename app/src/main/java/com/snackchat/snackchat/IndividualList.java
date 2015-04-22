@@ -1,6 +1,7 @@
 package com.snackchat.snackchat;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Button;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,11 +72,34 @@ public class IndividualList extends Activity {
         // because the List's task is now completed
         // and then Send user to ListsInGroup Page
 
+        // totalCost < maxPrice ($50)
+        String entry;
+        int tc = 100;
+        entry = totalCost.getText().toString();
+        tc = Integer.parseInt(entry);
+        if(tc > 50)
+        {
+            Toast.makeText(getApplicationContext(), "Sorry, Total Cost is greater than the Max Price", Toast.LENGTH_SHORT).show();
+        }
+        // checkbox is checked?
+        else if (checkBox.isChecked()) {
+            Toast.makeText(getApplicationContext(), "Please check the checkbox", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            // remove list from Lists in Group
+            // send user to ListsInGroup page
+            Intent in = new Intent(getBaseContext(), ListsInGroup.class);
+            startActivity(in);
+        }
+
+
     }
 
     // When User Hits Logout, brings them back to Welcome Page
     public void onLogout(View view){
         // Send them back to Welcome Page
+        Intent in = new Intent(getBaseContext(), Welcome.class);
+        startActivity(in);
 
     }
 

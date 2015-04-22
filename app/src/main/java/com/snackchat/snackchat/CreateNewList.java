@@ -1,6 +1,7 @@
 package com.snackchat.snackchat;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -65,7 +66,8 @@ public class CreateNewList extends Activity {
     // When User Hits Cancel, brings them back to the Page of the Specific Group they were on
     public void onCancel(View view){
         // Send them back to Page of the Specific Group they were on
-
+        Intent in = new Intent(getBaseContext(), ListsInGroup.class);
+        startActivity(in);
     }
 
     /*
@@ -95,6 +97,11 @@ public class CreateNewList extends Activity {
 
         // ADD submitList to the Group
         // Send them back to the Page of the specific group they were on
+        else {
+            // still needs to add submitList to the group
+            Intent in = new Intent(getBaseContext(), ListsInGroup.class);
+            startActivity(in);
+        }
 
     }
 

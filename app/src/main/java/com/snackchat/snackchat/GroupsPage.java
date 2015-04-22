@@ -1,6 +1,7 @@
 package com.snackchat.snackchat;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import android.widget.ListView;
 import android.widget.Button;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,14 +62,16 @@ public class GroupsPage extends Activity {
     // When user hits Create A New Group, brings them to Create New Group Page
     public void onCreateNewGroup(View view){
         // Send them to Create New Group Page
-
+        Intent in = new Intent(getBaseContext(), CreateNewGroupScreen.class);
+        startActivity(in);
     }
 
 
     // When User Hits Logout, brings them back to Welcome Page
     public void onLogout(View view){
         // Send them back to Welcome Page
-
+        Intent in = new Intent(getBaseContext(), Welcome.class);
+        startActivity(in);
     }
 
     @Override
