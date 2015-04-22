@@ -25,6 +25,9 @@
             android:label="@string/title_activity_login" >
         </activity>
         <activity
+            android:name=".DispatchActivity">
+        </activity>
+        <activity
             android:name=".Welcome"
             android:label="@string/title_activity_welcome" >
         </activity>

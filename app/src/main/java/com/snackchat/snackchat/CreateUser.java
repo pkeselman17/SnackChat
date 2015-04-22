@@ -15,6 +15,11 @@ import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.EditText;
 import android.widget.Toast;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 
 public class CreateUser extends Activity {
@@ -25,7 +30,6 @@ public class CreateUser extends Activity {
     private static EditText emailEditText = null;
     private static EditText passwordEditText = null;
     private static EditText confirmEditText = null;
-    private static String TAG = "tyler";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +52,6 @@ public class CreateUser extends Activity {
         final String confPass = confirmEditText.getText().toString().trim();
 
         //see if the info is being stored to the string above when the submit button is pressed
-        Log.d(TAG, firstName);
 
         //Verify text entered is valid
         if (firstName.length() == 0)
@@ -80,21 +83,26 @@ public class CreateUser extends Activity {
         {
             Toast.makeText(getApplicationContext(),"Please enter a valid email address", Toast.LENGTH_SHORT).show();
         }
-        // AFTER CREATING USER, SEND THEM BACK TO WELCOME SCREEN
-        // Store All Create User info in parse
+
         else{
-//            ParseObject user = new ParseObject("user");
-//            user.put("first_name", firstName);
-//            user.put("last_name", lastName);
-//            user.put("email", email);
-//            user.put("password", password);
-//            user.saveInBackground();
-            Intent in = new Intent(getBaseContext(), Welcome.class);
-            startActivity(in);
+
+            ParseUser user = new ParseUser();
+            user.put("first_name", firstName);
+            user.put("last_name", lastName);
+            user.setUsername(email);
+            user.setPassword(password);
+            user.signUpInBackground(new SignUpCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if(e == null){
+                        Toast.makeText(CreateUser.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    }else{
+                        Intent intent = new Intent(CreateUser.this, DispatchActivity.class);
+                        startActivity(intent);
+                    }
+                }
+            });
         }
-
-
-
     }
 
 
