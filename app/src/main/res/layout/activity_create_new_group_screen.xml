@@ -37,16 +37,17 @@
         android:textSize="45px"
         android:layout_below="@+id/nameTextBox" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Spinner
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
         android:id="@+id/memberNameTextBox"
-        android:layout_toRightOf="@+id/memberName"
+        android:paddingTop="1px"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:paddingTop="35px"
-        android:maxLines="1"
-        android:layout_below="@+id/nameTextBox" />
+        android:layout_toRightOf="@+id/memberName"
+        android:layout_toEndOf="@+id/memberName"
+        android:layout_below="@+id/nameTextBox"
+        android:layout_marginTop="50dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -55,21 +56,21 @@
 
         android:onClick="onAddedItem"
         android:id="@+id/addMemberButton"
+        android:clickable="true"
         android:layout_below="@+id/memberNameTextBox"
-        android:layout_centerHorizontal="true"
-        android:clickable="true" />
+        android:layout_centerHorizontal="true" />
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:id="@+id/itemsListView"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/addMemberButton"
-        android:layout_above="@+id/doneButton"
         android:scrollingCache="true"
         android:fastScrollAlwaysVisible="false"
         android:fastScrollEnabled="false"
-        android:background="#ff0069ff" />
+        android:background="#ff0069ff"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="200dp" />
 
     <Button
         android:layout_width="wrap_content"

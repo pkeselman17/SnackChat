@@ -13,7 +13,12 @@ import android.widget.ListView;
 import android.widget.Button;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
+
+import com.parse.FindCallback;
 import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
@@ -61,6 +66,19 @@ public class GroupsPage extends Activity {
         myGroups.add("Family");
         myGroups.add("Work Friends");
         myGroups.add("Next Year Housemates");
+
+        ParseUser me = ParseUser.getCurrentUser();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Group");
+        query.whereEqualTo("members", me);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> parseUsers, ParseException e) {
+                for(ParseObject p : parseUsers){
+                    myGroups.add(p.get("name").toString());
+                }
+            }
+        });
+
     }
 
     // When user hits Create A New Group, brings them to Create New Group Page
