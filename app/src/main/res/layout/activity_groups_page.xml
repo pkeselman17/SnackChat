@@ -27,7 +27,7 @@
         android:fastScrollAlwaysVisible="false"
         android:fastScrollEnabled="false"
         android:background="#ff0069ff"
-        android:layout_below="@+id/Title" />
+        android:layout_below="@+id/Title"/>
 
     <Button
         android:layout_width="wrap_content"

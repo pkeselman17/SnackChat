@@ -3,6 +3,7 @@ package com.snackchat.snackchat;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +12,12 @@ import android.widget.TextView;
 import android.widget.ListView;
 import android.widget.Button;
 import android.widget.ArrayAdapter;
+
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +28,8 @@ public class ListsInGroup extends Activity {
     private ArrayAdapter<String> adapter;
     private Button createNewListButton;
     private Button logoutButton;
+    private String groupTitle;
+    private TextView listsInGroupTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +37,24 @@ public class ListsInGroup extends Activity {
         setContentView(R.layout.activity_lists_in_group);
 
         populateLists();
+
+        //Set Group title
+        listsInGroupTitle = (TextView)findViewById(R.id.listsInGroupTitle);
+
+        String title = getIntent().getExtras().getString("title");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Group");
+        query.whereEqualTo("name", title);
+        query.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(ParseObject parseObject, ParseException e) {
+                Log.d("TITLE", parseObject.get("name").toString());
+            }
+        });
+
+        listsInGroupTitle.setText("Hello");
+        groupTitle = listsInGroupTitle.getText().toString();
+        Log.d("TITLE", groupTitle);
+
 
         // initialize
         createNewListButton = (Button) findViewById(R.id.createListButton);
@@ -49,6 +76,8 @@ public class ListsInGroup extends Activity {
         listsInGroup.add("Zach's List");
         listsInGroup.add("Brett's List");
         listsInGroup.add("Spencer's List");
+
+        //Parse lists
     }
 
     @Override

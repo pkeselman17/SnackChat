@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ListView;
@@ -50,22 +51,25 @@ public class GroupsPage extends Activity {
 
         adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,myGroups);
         lv.setAdapter(adapter);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                itemClick(position);
+            }
+        });
+
+
         ParseUser user = ParseUser.getCurrentUser();
-        Log.d("PHIL",user.getUsername().toString());
 
     }
 
+    private void itemClick(Integer titlePos) {
+        Intent intent = new Intent(getBaseContext(),ListsInGroup.class);
+        intent.putExtra("title", myGroups.get(titlePos));
+        startActivity(intent);
+    }
+
     private void populateGroupList(){
-        myGroups.add("Roommates");
-        myGroups.add("Soccer Team");
-        myGroups.add("Fraternity Brothers");
-        myGroups.add("Boys From Home");
-        myGroups.add("4471 Group");
-        myGroups.add("Basketball Team");
-        myGroups.add("Neighborhood");
-        myGroups.add("Family");
-        myGroups.add("Work Friends");
-        myGroups.add("Next Year Housemates");
 
         ParseUser me = ParseUser.getCurrentUser();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Group");
@@ -115,6 +119,7 @@ public class GroupsPage extends Activity {
             return true;
         }
 
+        Log.d("CLICK", "ITEM" + id);
         return super.onOptionsItemSelected(item);
     }
 }
