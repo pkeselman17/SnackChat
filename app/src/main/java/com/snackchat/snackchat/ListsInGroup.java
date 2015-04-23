@@ -13,10 +13,12 @@ import android.widget.ListView;
 import android.widget.Button;
 import android.widget.ArrayAdapter;
 
+import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,13 +49,12 @@ public class ListsInGroup extends Activity {
         query.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
             public void done(ParseObject parseObject, ParseException e) {
-                Log.d("TITLE", parseObject.get("name").toString());
+                groupTitle= parseObject.get("name").toString();
+                listsInGroupTitle.setText(groupTitle);
             }
         });
 
-        listsInGroupTitle.setText("Hello");
-        groupTitle = listsInGroupTitle.getText().toString();
-        Log.d("TITLE", groupTitle);
+
 
 
         // initialize
@@ -66,18 +67,22 @@ public class ListsInGroup extends Activity {
     }
 
     private void populateLists(){
-        listsInGroup.add("Dan's List");
-        listsInGroup.add("Tommy's List");
-        listsInGroup.add("Bryan's List");
-        listsInGroup.add("Phil's List");
-        listsInGroup.add("TJ's List");
-        listsInGroup.add("Michael's List");
-        listsInGroup.add("Johnny's List");
-        listsInGroup.add("Zach's List");
-        listsInGroup.add("Brett's List");
-        listsInGroup.add("Spencer's List");
 
-        //Parse lists
+        //Query lists from Parse that you belong to
+        ParseUser me = ParseUser.getCurrentUser();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Lists");
+        query.whereEqualTo("members", me);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> parseUsers, ParseException e) {
+                for(ParseObject p : parseUsers){
+                    listsInGroup.add(p.get("name").toString());
+                }
+                adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,listsInGroup);
+                adapter.notifyDataSetChanged();
+                lv.setAdapter(adapter);
+            }
+        });
     }
 
     @Override

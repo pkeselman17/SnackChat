@@ -11,6 +11,15 @@ import android.widget.ListView;
 import android.widget.Button;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
+
+import com.parse.FindCallback;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseRelation;
+import com.parse.ParseUser;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,9 +49,6 @@ public class CreateNewList extends Activity {
         itemText = (EditText) findViewById(R.id.ItemTextBox);
 
         stringArray = new ArrayList<String>();
-
-        // This isn't really needed, just tests output with a line saying "Your List"
-        stringArray.add("Your List");
 
         adapter = new ArrayAdapter<String> (getApplicationContext(), android.R.layout.simple_list_item_1, stringArray);
         lv.setAdapter(adapter);
@@ -76,32 +82,56 @@ public class CreateNewList extends Activity {
     and the Array (as SubmitList)
      */
     public void onDone(View view){
-        String submitName = name.getText().toString().trim();
-        String submitMaxPrice = maxPrice.getText().toString().trim();
-        // Start list at position 1 because spot 0 is the text that says "Your List"
-        List submitList = stringArray.subList(1, stringArray.size());
-
-        //Verify text entered is valid
-        if (name.length() == 0)
-        {
-            Toast.makeText(getApplicationContext(),"Please enter a name", Toast.LENGTH_SHORT).show();
-        }
-        else if (maxPrice.length() == 0)
-        {
-                Toast.makeText(getApplicationContext(),"Please enter a max price", Toast.LENGTH_SHORT).show();
-        }
-        else if (submitList.size() == 0)
-        {
-            Toast.makeText(getApplicationContext(),"Please add elements to the list", Toast.LENGTH_SHORT).show();
+        List<ParseQuery<ParseUser>> queries = new ArrayList<ParseQuery<ParseUser>>();
+        for(String s : stringArray){
+            ParseQuery<ParseUser> query = ParseUser.getQuery();
+            query.whereEqualTo("username", s);
+            queries.add(query);
         }
 
-        // ADD submitList to the Group
-        // Send them back to the Page of the specific group they were on
-        else {
-            // still needs to add submitList to the group
-            Intent in = new Intent(getBaseContext(), ListsInGroup.class);
-            startActivity(in);
-        }
+        ParseQuery<ParseUser> mainQuery = ParseQuery.or(queries);
+
+        mainQuery.findInBackground(new FindCallback<ParseUser>() {
+            @Override
+            public void done(List<ParseUser> parseUsers, ParseException e) {
+                final ParseObject list = new ParseObject("List");
+                final List<ParseObject> items = new ArrayList<ParseObject>();
+
+                for(String s : stringArray){
+                    ParseObject item = new ParseObject("Item");
+                    item.put("name",s);
+                    item.saveInBackground();
+                    ParseQuery<ParseObject> query = ParseQuery.getQuery("Item");
+                    query.getFirstInBackground(new GetCallback<ParseObject>() {
+                        @Override
+                        public void done(ParseObject parseObject, ParseException e) {
+                            list.put("name", name.getText().toString());
+                            list.put("maxprice",maxPrice.getText().toString());
+                            list.put("created_by", ParseUser.getCurrentUser().getUsername());
+
+                            ParseRelation<ParseObject> relation = list.getRelation("Items");
+                            for(ParseObject p : items){
+                                relation.add(p);
+                            }
+                        }
+                    });
+
+                }
+
+
+
+
+                list.saveInBackground();
+
+
+
+
+            }
+        });
+
+
+        Intent in = new Intent(getBaseContext(), GroupsPage.class);
+        startActivity(in);
 
     }
 

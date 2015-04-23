@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import java.lang.reflect.Array;
+import java.security.acl.Group;
 import java.util.List;
 import java.util.ArrayList;
 import android.widget.EditText;
@@ -130,36 +131,9 @@ public class CreateNewGroupScreen extends Activity {
         });
 
 
-
-        String groupTitle = groupName.getText().toString().trim();
-        // Start groupMemberList at position 1 because spot 0 has "Your Group"
-        List groupMemberList = stringArray.subList(1, stringArray.size());
-
-
-        //Verify text entered is valid
-//        if (groupTitle.length() == 0)
-//        {
-//            Toast.makeText(getApplicationContext(), "Please enter a Group name", Toast.LENGTH_SHORT).show();
-//        }
-//        else if (groupMemberList.size() == 0)
-//        {
-//            Toast.makeText(getApplicationContext(),"Please add members to the group", Toast.LENGTH_SHORT).show();
-//        }
-
-        // ADD groupTitle and groupMemberList to My Groups
-        // Send them back to the My Groups page they were on
-//        else {
-            // ADD groupTitle and groupMemberList to My Groups
-
-
-            // Send them back to the My Groups page they were on
-            Intent in = new Intent(getBaseContext(), GroupsPage.class);
-            startActivity(in);
-//        }
-
-
+        Intent in = new Intent(getBaseContext(), GroupsPage.class);
+        startActivity(in);
     }
-
 
 
     @Override

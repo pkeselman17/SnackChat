@@ -3,5 +3,6 @@
     android:id="@android:id/text1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:textColor="@android:color/black">
+    android:textColor="@android:color/black"
+    android:color="@android:color/darker_gray">
 </TextView>

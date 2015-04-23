@@ -30,9 +30,9 @@ import java.util.List;
 
 public class GroupsPage extends Activity {
 
-    private List<String> myGroups = new ArrayList<String>();
-    private ListView lv;
-    private ArrayAdapter<String> adapter;
+    private static List<String> myGroups = new ArrayList<String>();
+    private static ListView lv;
+    private static ArrayAdapter<String> adapter;
     private Button createNewGroupButton;
     private Button logoutButton;
 
@@ -41,8 +41,6 @@ public class GroupsPage extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groups_page);
-
-        populateGroupList();
 
         // initialize
         createNewGroupButton = (Button) findViewById(R.id.createGroupButton);
@@ -63,6 +61,15 @@ public class GroupsPage extends Activity {
 
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Log.d("ONRESUME","ON RESUME");
+        myGroups.clear();
+        populateGroupList();
+
+    }
+
     private void itemClick(Integer titlePos) {
         Intent intent = new Intent(getBaseContext(),ListsInGroup.class);
         intent.putExtra("title", myGroups.get(titlePos));
@@ -80,6 +87,9 @@ public class GroupsPage extends Activity {
                 for(ParseObject p : parseUsers){
                     myGroups.add(p.get("name").toString());
                 }
+                adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,myGroups);
+                adapter.notifyDataSetChanged();
+                lv.setAdapter(adapter);
             }
         });
 
